@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>オーケストラカレンダー</title>
+  <meta name="description" content="在京・神奈川の4オーケストラの定期演奏会カレンダー">
+
+  <!-- iPhoneのホーム画面に追加したとき、アプリのように表示するための設定 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="オケカレ">
+  <meta name="theme-color" content="#1b2340">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="manifest" href="manifest.webmanifest">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>オーケストラカレンダー</h1>
+    <p class="updated" id="updated"></p>
+  </header>
+
+  <main>
+    <!-- 表示するオーケストラの切り替え -->
+    <section class="filters" id="filters" aria-label="表示するオーケストラ"></section>
+
+    <!-- 月カレンダー -->
+    <section class="calendar-card">
+      <div class="month-nav">
+        <button type="button" id="prev" aria-label="前の月">‹</button>
+        <h2 id="month-title"></h2>
+        <button type="button" id="next" aria-label="次の月">›</button>
+      </div>
+      <div class="weekdays">
+        <span class="sun">日</span><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span class="sat">土</span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- 公演の一覧（日付を選ぶとその日だけ） -->
+    <section class="list-section">
+      <div class="list-head">
+        <h2 id="list-title"></h2>
+        <button type="button" class="show-all" id="show-all" hidden>月全体を表示</button>
+      </div>
+      <div id="list"></div>
+    </section>
+
+    <!-- チケット発売のお知らせ -->
+    <section class="sales-section">
+      <h2>🎫 チケット発売のお知らせ</h2>
+      <div id="sales"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>各オーケストラ公式サイトの情報を週1回自動で集めています。出演者の変更などが反映されていないことがあるので、チケット購入前に必ず公式サイトで確認してください。</p>
+    <p>発売日は一般発売日（会員先行ではない日）です。</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

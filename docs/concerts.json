@@ -1,0 +1,685 @@
+{
+ "updated_at": "2026-11-14 15:41",
+ "orchestras": [
+  {
+   "id": "nhk",
+   "name": "NHK交響楽団",
+   "short": "N響"
+  },
+  {
+   "id": "yomikyo",
+   "name": "読売日本交響楽団",
+   "short": "読響"
+  },
+  {
+   "id": "njp",
+   "name": "新日本フィルハーモニー交響楽団",
+   "short": "新日本フィル"
+  },
+  {
+   "id": "kanaphil",
+   "name": "神奈川フィルハーモニー管弦楽団",
+   "short": "神奈川フィル"
+  }
+ ],
+ "errors": [],
+ "concerts": [
+  {
+   "orchestra": "nhk",
+   "title": "第2075回 定期公演 Cプログラム",
+   "date": "2026-11-14",
+   "time": "14:00",
+   "venue": "NHKホール",
+   "conductor": "トゥガン・ソヒエフ",
+   "performers": [],
+   "program": [
+    "― N響100年特別企画 ベートーヴェン交響曲全曲演奏3 ―",
+    "ベートーヴェン／序曲「コリオラン」",
+    "ベートーヴェン／交響曲 第2番 ニ長調 作品36",
+    "ベートーヴェン／交響曲 第6番 ヘ長調 作品68「田園」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202611C.html",
+   "sale_date": "2026-07-26",
+   "sold_out": false
+  },
+  {
+   "orchestra": "njp",
+   "title": "すみだクラシックへの扉 #44（土）",
+   "date": "2026-11-14",
+   "time": "14:00",
+   "venue": "すみだトリフォニーホール 大ホール",
+   "conductor": "ジュリアン・ラクリン",
+   "performers": [
+    "石井琢磨（ピアノ）"
+   ],
+   "program": [
+    "リスト：ハンガリー狂詩曲第2番（管弦楽版）",
+    "リスト：ピアノ協奏曲第1番 変ホ長調",
+    "ドヴォルジャーク：交響曲第8番 ト長調 op.88"
+   ],
+   "url": "https://www.njp.or.jp/concerts/261114",
+   "sale_date": "2026-05-30",
+   "sold_out": true
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2076回 定期公演 Bプログラム",
+   "date": "2026-11-19",
+   "time": "19:00",
+   "venue": "サントリーホール",
+   "conductor": "トゥガン・ソヒエフ",
+   "performers": [
+    "ピアノ : アレクサンドル・カントロフ"
+   ],
+   "program": [
+    "ラフマニノフ／ピアノ協奏曲 第2番 ハ短調 作品18",
+    "チャイコフスキー／バレエ音楽「くるみ割り人形」作品71（ソヒエフ・セレクション）"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202611B.html",
+   "sale_date": "2026-07-26",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2076回 定期公演 Bプログラム",
+   "date": "2026-11-20",
+   "time": "19:00",
+   "venue": "サントリーホール",
+   "conductor": "トゥガン・ソヒエフ",
+   "performers": [
+    "ピアノ : アレクサンドル・カントロフ"
+   ],
+   "program": [
+    "ラフマニノフ／ピアノ協奏曲 第2番 ハ短調 作品18",
+    "チャイコフスキー／バレエ音楽「くるみ割り人形」作品71（ソヒエフ・セレクション）"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202611B.html",
+   "sale_date": "2026-07-26",
+   "sold_out": false
+  },
+  {
+   "orchestra": "kanaphil",
+   "title": "みなとみらいシリーズ定期演奏会第418回",
+   "date": "2026-11-28",
+   "time": "14:00",
+   "venue": "横浜みなとみらいホール",
+   "conductor": "沼尻竜典（音楽監督）",
+   "performers": [
+    "今井信子（ヴィオラ）"
+   ],
+   "program": [
+    "ベルリオーズ／交響曲「イタリアのハロルド」Op.16",
+    "ラヴェル／高雅で感傷的なワルツ",
+    "ラヴェル／ボレロ"
+   ],
+   "url": "https://www.kanaphil.or.jp/concert/3966/",
+   "sale_date": "2026-07-28",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2077回 定期公演 Aプログラム",
+   "date": "2026-11-28",
+   "time": "18:00",
+   "venue": "NHKホール",
+   "conductor": "シャルル・デュトワ",
+   "performers": [
+    "ピアノ : マルタ・アルゲリッチ"
+   ],
+   "program": [
+    "― N響100年特別企画 ―",
+    "ファリャ／バレエ組曲「三角帽子」第2番",
+    "ラヴェル／ピアノ協奏曲 ト長調",
+    "ベルリオーズ／幻想交響曲 作品14"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202612A.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2077回 定期公演 Aプログラム",
+   "date": "2026-11-29",
+   "time": "14:00",
+   "venue": "NHKホール",
+   "conductor": "シャルル・デュトワ",
+   "performers": [
+    "ピアノ : マルタ・アルゲリッチ"
+   ],
+   "program": [
+    "― N響100年特別企画 ―",
+    "ファリャ／バレエ組曲「三角帽子」第2番",
+    "ラヴェル／ピアノ協奏曲 ト長調",
+    "ベルリオーズ／幻想交響曲 作品14"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202612A.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "yomikyo",
+   "title": "第663回定期演奏会",
+   "date": "2026-11-30",
+   "time": "19:00",
+   "venue": "サントリーホール",
+   "conductor": "フランソワ＝グザヴィエ・ロト",
+   "performers": [
+    "エマニュエル・パユ（フルート）",
+    "種谷典子（ソプラノ）",
+    "林悠介（第1コンサートマスター）"
+   ],
+   "program": [
+    "マヌリ：サッカード〜フルートとオーケストラのための",
+    "マーラー：交響曲第4番 ト長調「大いなる喜びへの賛歌」"
+   ],
+   "url": "https://yomikyo.or.jp/concert/2026/01/663-1.php",
+   "sale_date": "2026-07-20",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2078回 定期公演 Cプログラム",
+   "date": "2026-12-04",
+   "time": "19:00",
+   "venue": "NHKホール",
+   "conductor": "シャルル・デュトワ",
+   "performers": [],
+   "program": [
+    "― N響100年特別企画 ベートーヴェン交響曲全曲演奏4 ―",
+    "ベートーヴェン／交響曲 第4番 変ロ長調 作品60",
+    "ベートーヴェン／交響曲 第7番 イ長調 作品92"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202612C.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2078回 定期公演 Cプログラム",
+   "date": "2026-12-05",
+   "time": "14:00",
+   "venue": "NHKホール",
+   "conductor": "シャルル・デュトワ",
+   "performers": [],
+   "program": [
+    "― N響100年特別企画 ベートーヴェン交響曲全曲演奏4 ―",
+    "ベートーヴェン／交響曲 第4番 変ロ長調 作品60",
+    "ベートーヴェン／交響曲 第7番 イ長調 作品92"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202612C.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2079回 定期公演 Bプログラム",
+   "date": "2026-12-10",
+   "time": "19:00",
+   "venue": "サントリーホール",
+   "conductor": "マキシム・エメリャニチェフ",
+   "performers": [
+    "チェロ : ニコラ・アルトシュテット"
+   ],
+   "program": [
+    "モーツァルト／歌劇「魔笛」序曲",
+    "スルンカ／煙─チェロとオーケストラのための（2025／2026）［NHK交響楽団100年記念委嘱作品／チェコ・フィルハーモニー管弦楽団 国際共同委嘱／世界初演］",
+    "メンデルスゾーン／交響曲 第3番 イ短調 作品56「スコットランド」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202612B.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2079回 定期公演 Bプログラム",
+   "date": "2026-12-11",
+   "time": "19:00",
+   "venue": "サントリーホール",
+   "conductor": "マキシム・エメリャニチェフ",
+   "performers": [
+    "チェロ : ニコラ・アルトシュテット"
+   ],
+   "program": [
+    "モーツァルト／歌劇「魔笛」序曲",
+    "スルンカ／煙─チェロとオーケストラのための（2025／2026）［NHK交響楽団100年記念委嘱作品／チェコ・フィルハーモニー管弦楽団 国際共同委嘱／世界初演］",
+    "メンデルスゾーン／交響曲 第3番 イ短調 作品56「スコットランド」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202612B.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "kanaphil",
+   "title": "みなとみらいシリーズ定期演奏会第419回",
+   "date": "2027-01-16",
+   "time": "14:00",
+   "venue": "横浜みなとみらいホール",
+   "conductor": "クレメンス・シュルト",
+   "performers": [
+    "辻彩奈（ヴァイオリン）"
+   ],
+   "program": [
+    "フランク・ブリッジ／交響組曲「海」",
+    "ブリテン／ヴァイオリン協奏曲Op.15",
+    "シューマン／交響曲第3番変ホ長調Op.97「ライン」"
+   ],
+   "url": "https://www.kanaphil.or.jp/concert/3967/",
+   "sale_date": "2026-08-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2080回 定期公演 Aプログラム",
+   "date": "2027-01-16",
+   "time": "18:00",
+   "venue": "NHKホール",
+   "conductor": "ファビオ・ルイージ",
+   "performers": [],
+   "program": [
+    "マーラー／交響曲 第9番 ニ長調"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202701A.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2080回 定期公演 Aプログラム",
+   "date": "2027-01-17",
+   "time": "14:00",
+   "venue": "NHKホール",
+   "conductor": "ファビオ・ルイージ",
+   "performers": [],
+   "program": [
+    "マーラー／交響曲 第9番 ニ長調"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202701A.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2081回 定期公演 Cプログラム",
+   "date": "2027-01-22",
+   "time": "19:00",
+   "venue": "NHKホール",
+   "conductor": "ファビオ・ルイージ",
+   "performers": [
+    "ピアノ : アレッサンドロ・タヴェルナ"
+   ],
+   "program": [
+    "― ベートーヴェン没後200年 ピアノ協奏曲全曲演奏1 ―",
+    "ソレンセン／夕暮れの大地（2017）",
+    "ベートーヴェン／ピアノ協奏曲 第1番 ハ長調 作品15",
+    "ニルセン／交響曲 第6番「シンフォニア・センプリーチェ」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202701C.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "yomikyo",
+   "title": "第664回定期演奏会",
+   "date": "2027-01-22",
+   "time": "19:00",
+   "venue": "サントリーホール",
+   "conductor": "山田和樹",
+   "performers": [
+    "ルーカス・ユッセン、アルトゥール・ユッセン（ピアノ）"
+   ],
+   "program": [
+    "大栗裕：大阪俗謡による幻想曲",
+    "バルトーク：2台ピアノ、打楽器と管弦楽のための協奏曲",
+    "シューベルト／近衛秀麿：大交響曲 ハ長調"
+   ],
+   "url": "https://yomikyo.or.jp/concert/2026/01/664-1.php",
+   "sale_date": "2026-10-11",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2081回 定期公演 Cプログラム",
+   "date": "2027-01-23",
+   "time": "14:00",
+   "venue": "NHKホール",
+   "conductor": "ファビオ・ルイージ",
+   "performers": [
+    "ピアノ : アレッサンドロ・タヴェルナ"
+   ],
+   "program": [
+    "― ベートーヴェン没後200年 ピアノ協奏曲全曲演奏1 ―",
+    "ソレンセン／夕暮れの大地（2017）",
+    "ベートーヴェン／ピアノ協奏曲 第1番 ハ長調 作品15",
+    "ニルセン／交響曲 第6番「シンフォニア・センプリーチェ」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202701C.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "njp",
+   "title": "#674〈サントリーホール・シリーズ〉",
+   "date": "2027-01-23",
+   "time": "14:00",
+   "venue": "サントリーホール",
+   "conductor": "佐渡裕",
+   "performers": [
+    "アレクサンドラ・コヌノヴァ（ヴァイオリン）"
+   ],
+   "program": [
+    "サン＝サーンス：ヴァイオリン協奏曲第３番 ロ短調 op. 61",
+    "R.シュトラウス：交響詩「英雄の生涯」"
+   ],
+   "url": "https://www.njp.or.jp/concerts/270123",
+   "sale_date": "2026-09-05",
+   "sold_out": false
+  },
+  {
+   "orchestra": "njp",
+   "title": "#674〈トリフォニーホール・シリーズ〉",
+   "date": "2027-01-24",
+   "time": "14:00",
+   "venue": "すみだトリフォニーホール 大ホール",
+   "conductor": "佐渡裕",
+   "performers": [
+    "アレクサンドラ・コヌノヴァ（ヴァイオリン）"
+   ],
+   "program": [
+    "サン＝サーンス：ヴァイオリン協奏曲第３番 ロ短調 op. 61",
+    "R.シュトラウス：交響詩「英雄の生涯」"
+   ],
+   "url": "https://www.njp.or.jp/concerts/270124",
+   "sale_date": "2026-09-05",
+   "sold_out": false
+  },
+  {
+   "orchestra": "njp",
+   "title": "すみだクラシックへの扉 #45（金）",
+   "date": "2027-01-29",
+   "time": "14:00",
+   "venue": "すみだトリフォニーホール 大ホール",
+   "conductor": "佐渡裕",
+   "performers": [
+    "アレクサンドラ・コヌノヴァ（ヴァイオリン）"
+   ],
+   "program": [
+    "プロコフィエフ：組曲「3つのオレンジへの恋」 op. 33bis",
+    "ハチャトゥリアン ：ヴァイオリン協奏曲 ニ短調",
+    "チャイコフスキー：交響曲第4番 ヘ短調 op. 36"
+   ],
+   "url": "https://www.njp.or.jp/concerts/270129",
+   "sale_date": "2026-09-05",
+   "sold_out": false
+  },
+  {
+   "orchestra": "njp",
+   "title": "すみだクラシックへの扉 #45（土）",
+   "date": "2027-01-30",
+   "time": "14:00",
+   "venue": "すみだトリフォニーホール 大ホール",
+   "conductor": "佐渡裕",
+   "performers": [
+    "アレクサンドラ・コヌノヴァ（ヴァイオリン）"
+   ],
+   "program": [
+    "プロコフィエフ：組曲「3つのオレンジへの恋」 op. 33bis",
+    "ハチャトゥリアン ：ヴァイオリン協奏曲 ニ短調",
+    "チャイコフスキー：交響曲第4番 ヘ短調 op. 36"
+   ],
+   "url": "https://www.njp.or.jp/concerts/270130",
+   "sale_date": "2026-09-05",
+   "sold_out": false
+  },
+  {
+   "orchestra": "kanaphil",
+   "title": "音楽堂シリーズ第38回",
+   "date": "2027-01-30",
+   "time": "15:00",
+   "venue": "神奈川県立音楽堂",
+   "conductor": "",
+   "performers": [
+    "石田泰尚（ヴァイオリン）"
+   ],
+   "program": [
+    "ヒンデミット／弦楽のための5つの小品Op.44",
+    "シューマン／ヴァイオリン協奏曲ニ短調",
+    "シューマン／交響曲第4番ニ短調Op.120"
+   ],
+   "url": "https://www.kanaphil.or.jp/concert/3981/",
+   "sale_date": "2026-09-01",
+   "sold_out": true
+  },
+  {
+   "orchestra": "njp",
+   "title": "クラシックへの扉 大宮公演 Vol.2 〈ロシア〉",
+   "date": "2027-01-31",
+   "time": "14:00",
+   "venue": "RaiBoC Hall （市民会館おおみや）",
+   "conductor": "佐渡裕",
+   "performers": [
+    "アレクサンドラ・コヌノヴァ（ヴァイオリン）"
+   ],
+   "program": [
+    "プロコフィエフ：組曲「3つのオレンジへの恋」 op. 33bis",
+    "ハチャトゥリアン ：ヴァイオリン協奏曲 ニ短調",
+    "チャイコフスキー：交響曲第4番 ヘ短調 op. 36"
+   ],
+   "url": "https://www.njp.or.jp/concerts/270131",
+   "sale_date": "2026-05-30",
+   "sold_out": false
+  },
+  {
+   "orchestra": "kanaphil",
+   "title": "みなとみらいシリーズ定期演奏会第420回",
+   "date": "2027-02-06",
+   "time": "14:00",
+   "venue": "横浜みなとみらいホール",
+   "conductor": "小泉和裕（特別客演指揮者）",
+   "performers": [
+    "金川真弓（ヴァイオリン）"
+   ],
+   "program": [
+    "ベルリオーズ／序曲「海賊」Op.21",
+    "ブルッフ／ヴァイオリン協奏曲第1番ト短調Op.26",
+    "メンデルスゾーン／交響曲第3番イ短調Op.56「スコットランド」"
+   ],
+   "url": "https://www.kanaphil.or.jp/concert/3969/",
+   "sale_date": "2026-09-15",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2082回 定期公演 Aプログラム",
+   "date": "2027-02-06",
+   "time": "18:00",
+   "venue": "NHKホール",
+   "conductor": "アントネッロ・マナコルダ",
+   "performers": [
+    "バリトン※ : クリスティアン・ゲルハーヘル"
+   ],
+   "program": [
+    "バッハ（ウェーベルン編）／「音楽のささげもの」BWV1079 ― 6声のリチェルカール",
+    "マーラー／リュッケルトによる5つの歌",
+    "シェーンベルク／室内交響曲 第2番 作品38",
+    "シューベルト／交響曲 第7番 ロ短調 D. 759「未完成」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202702A.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2082回 定期公演 Aプログラム",
+   "date": "2027-02-07",
+   "time": "14:00",
+   "venue": "NHKホール",
+   "conductor": "アントネッロ・マナコルダ",
+   "performers": [
+    "バリトン※ : クリスティアン・ゲルハーヘル"
+   ],
+   "program": [
+    "バッハ（ウェーベルン編）／「音楽のささげもの」BWV1079 ― 6声のリチェルカール",
+    "マーラー／リュッケルトによる5つの歌",
+    "シェーンベルク／室内交響曲 第2番 作品38",
+    "シューベルト／交響曲 第7番 ロ短調 D. 759「未完成」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202702A.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2083回 定期公演 Cプログラム",
+   "date": "2027-02-12",
+   "time": "19:00",
+   "venue": "NHKホール",
+   "conductor": "尾高忠明",
+   "performers": [
+    "ピアノ : イム・ユンチャン"
+   ],
+   "program": [
+    "― ベートーヴェン没後200年 ピアノ協奏曲全曲演奏2 ―",
+    "シューマン／歌劇「ゲノヴェーヴァ」序曲",
+    "ベートーヴェン／ピアノ協奏曲 第2番 変ロ長調 作品19",
+    "尾高尚忠／交響詩「蘆屋乙女」作品9",
+    "パヌフニク／交響曲 第2番「悲歌」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202702C.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "nhk",
+   "title": "第2083回 定期公演 Cプログラム",
+   "date": "2027-02-13",
+   "time": "14:00",
+   "venue": "NHKホール",
+   "conductor": "尾高忠明",
+   "performers": [
+    "ピアノ : イム・ユンチャン"
+   ],
+   "program": [
+    "― ベートーヴェン没後200年 ピアノ協奏曲全曲演奏2 ―",
+    "シューマン／歌劇「ゲノヴェーヴァ」序曲",
+    "ベートーヴェン／ピアノ協奏曲 第2番 変ロ長調 作品19",
+    "尾高尚忠／交響詩「蘆屋乙女」作品9",
+    "パヌフニク／交響曲 第2番「悲歌」"
+   ],
+   "url": "https://www.nhkso.or.jp/concert/202702C.html",
+   "sale_date": "2026-10-25",
+   "sold_out": false
+  },
+  {
+   "orchestra": "yomikyo",
+   "title": "第665回定期演奏会",
+   "date": "2027-02-19",
+   "time": "19:00",
+   "venue": "サントリーホール",
+   "conductor": "アニヤ・ビールマイアー",
+   "performers": [
+    "児玉隼人（トランペット）",
+    "ユビュ王の晩餐のための音楽（ツィンマーマン）"
+   ],
+   "program": [
+    "ツィンマーマン：トランペット協奏曲 ハ長調「誰も知らない私の悩み」",
+    "バーバー：弦楽のためのアダージョ",
+    "ショスタコーヴィチ：交響曲第９番 変ホ長調 作品70"
+   ],
+   "url": "https://yomikyo.or.jp/concert/2026/01/665-1.php",
+   "sale_date": "2026-10-11",
+   "sold_out": false
+  },
+  {
+   "orchestra": "njp",
+   "title": "#675〈サントリーホール・シリーズ〉",
+   "date": "2027-02-20",
+   "time": "14:00",
+   "venue": "サントリーホール",
+   "conductor": "ドロテー・オーバーリンガー（指揮・リコーダー）",
+   "performers": [],
+   "program": [
+    "テレマン：リコーダー協奏曲 ハ長調",
+    "Ｊ．Ｓ．バッハ：管弦楽組曲第３番 ニ長調 BWV 1068",
+    "ベートーヴェン：交響曲第２番 ニ長調 op. 36"
+   ],
+   "url": "https://www.njp.or.jp/concerts/270220",
+   "sale_date": "2026-09-05",
+   "sold_out": false
+  },
+  {
+   "orchestra": "njp",
+   "title": "#675〈トリフォニーホール・シリーズ〉",
+   "date": "2027-02-21",
+   "time": "14:00",
+   "venue": "すみだトリフォニーホール 大ホール",
+   "conductor": "ドロテー・オーバーリンガー（指揮・リコーダー）",
+   "performers": [],
+   "program": [
+    "テレマン：リコーダー協奏曲 ハ長調",
+    "Ｊ．Ｓ．バッハ：管弦楽組曲第３番 ニ長調 BWV 1068",
+    "ベートーヴェン：交響曲第２番 ニ長調 op. 36"
+   ],
+   "url": "https://www.njp.or.jp/concerts/270221",
+   "sale_date": "2026-09-05",
+   "sold_out": false
+  },
+  {
+   "orchestra": "kanaphil",
+   "title": "ミューザ川崎シリーズ第6回",
+   "date": "2027-03-03",
+   "time": "19:00",
+   "venue": "ミューザ川崎シンフォニーホール",
+   "conductor": "沼尻竜典（音楽監督）",
+   "performers": [
+    "シュテファン・ヴラダー（ピアノ）"
+   ],
+   "program": [
+    "ブラームス／ピアノ協奏曲第1番ニ短調Op.15",
+    "ベートーヴェン／交響曲第3番変ホ長調Op.55「英雄」"
+   ],
+   "url": "https://www.kanaphil.or.jp/concert/3976/",
+   "sale_date": "2026-10-13",
+   "sold_out": false
+  },
+  {
+   "orchestra": "kanaphil",
+   "title": "音楽堂シリーズ第39回",
+   "date": "2027-03-06",
+   "time": "15:00",
+   "venue": "神奈川県立音楽堂",
+   "conductor": "喜古恵理香",
+   "performers": [],
+   "program": [
+    "ガブリエリ／第7旋法による８声のカンツォン第1番",
+    "ガブリエリ／第7旋法による８声のカンツォン第2番",
+    "ストラヴィンスキー／管楽八重奏曲",
+    "メンデルスゾーン／管楽のための序曲 ハ長調Op.24",
+    "武満徹／シグナルズ・フロム・ヘヴン",
+    "ラヴェル（大橋晃一編曲）／亡き王女のためのパヴァーヌ",
+    "ミヨー／フランス組曲Op.248"
+   ],
+   "url": "https://www.kanaphil.or.jp/concert/3982/",
+   "sale_date": "2026-10-20",
+   "sold_out": false
+  },
+  {
+   "orchestra": "kanaphil",
+   "title": "みなとみらいシリーズ定期演奏会第421回",
+   "date": "2027-03-13",
+   "time": "14:00",
+   "venue": "横浜みなとみらいホール",
+   "conductor": "沼尻竜典（音楽監督）",
+   "performers": [
+    "重島清香（アルト）",
+    "神奈川ハーモニック・クワイア（女声合唱）",
+    "横須賀芸術劇場少年少女合唱団（児童合唱）"
+   ],
+   "program": [
+    "マーラー／交響曲第3番ニ短調"
+   ],
+   "url": "https://www.kanaphil.or.jp/concert/3970/",
+   "sale_date": "2026-10-27",
+   "sold_out": false
+  }
+ ]
+}
