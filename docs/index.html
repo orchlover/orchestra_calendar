@@ -17,7 +17,9 @@
   <link rel="icon" href="icons/icon-192.png">
   <link rel="manifest" href="manifest.webmanifest">
 
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=14">
+  <!-- 古いiPhone向け：ホーム画面から開いたことを印にする（上の青いバーを伸ばすため） -->
+  <script>if (navigator.standalone) document.documentElement.classList.add("standalone");</script>
 </head>
 <body>
   <header class="app-header">
@@ -88,7 +90,7 @@
     <p>発売日は一般発売日（会員先行ではない日）です。</p>
   </footer>
 
-  <script src="app.js?v=12"></script>
-  <script src="art.js?v=12"></script>
+  <script src="app.js?v=14"></script>
+  <script src="art.js?v=14"></script>
 </body>
 </html>
