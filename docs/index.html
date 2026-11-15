@@ -9,25 +9,30 @@
   <!-- iPhoneのホーム画面に追加したとき、アプリのように表示するための設定 -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- black：ステータスバー（時刻・電池）の下からページを始める。重なって白っぽくなるのを防ぐ -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="芸術">
   <meta name="theme-color" content="#1b2340">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="manifest" href="manifest.webmanifest">
 
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=12">
 </head>
 <body>
   <header class="app-header">
-    <h1>芸術</h1>
+    <!-- 1段目：左は空き・真ん中にタイトル・右に切り替え（重ならないように3列に分ける） -->
+    <div class="header-row">
+      <span></span>
+      <h1>芸術</h1>
+      <!-- オケ／美 の切り替え -->
+      <div class="mode-switch" role="tablist" aria-label="表示の切り替え">
+        <button type="button" role="tab" data-mode="orch" aria-selected="true">オケ</button>
+        <button type="button" role="tab" data-mode="art" aria-selected="false">美</button>
+      </div>
+    </div>
     <p class="updated" id="updated"></p>
     <p class="updated" id="art-updated" hidden></p>
-    <!-- オケ／美 の切り替え -->
-    <div class="mode-switch" role="tablist" aria-label="表示の切り替え">
-      <button type="button" role="tab" data-mode="orch" aria-selected="true">オケ</button>
-      <button type="button" role="tab" data-mode="art" aria-selected="false">美</button>
-    </div>
   </header>
 
   <!-- ===== オケ：定期演奏会カレンダー ===== -->
@@ -83,7 +88,7 @@
     <p>発売日は一般発売日（会員先行ではない日）です。</p>
   </footer>
 
-  <script src="app.js?v=10"></script>
-  <script src="art.js?v=10"></script>
+  <script src="app.js?v=12"></script>
+  <script src="art.js?v=12"></script>
 </body>
 </html>

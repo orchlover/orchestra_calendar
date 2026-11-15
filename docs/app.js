@@ -112,7 +112,12 @@ function renderCalendar() {
 }
 
 // ---------- 公演の一覧 ----------
-function concertCard(c) {
+// 同じ団体・同じ指揮者・同じ曲目なら「同じ演目」とみなす
+const programKey = (c) =>
+  [c.orchestra, c.conductor, c.program.length ? c.program.join("|") : c.title.replace(/［.］|\s/g, "")].join("#");
+
+// 公演カード。group は同じ演目の公演（日付順）で、1枚にまとめて日付を並べる
+function concertCard(c, group = [c]) {
   const o = orchestra(c.orchestra);
   const today = todayKey();
   let saleNote = "";
@@ -121,15 +126,22 @@ function concertCard(c) {
       ? `<span class="badge onsale-soon">${jpDate(c.sale_date, false)} 発売</span>`
       : `一般発売 ${jpDate(c.sale_date, false)}`;
   }
+  // 会場が日によって違うときは、日付の横に会場を書く
+  const sameVenue = group.every((g) => g.venue === c.venue);
+  const whens = group.map((g) =>
+    `<span class="when">${jpDate(g.date)} ${esc(g.time)}${sameVenue ? "" : `（${esc(g.venue)}）`}` +
+    `${g.sold_out ? ` <span class="badge soldout">完売</span>` : ""}</span>`
+  ).join(`<span class="sep">／</span>`);
+  // 「［金］」「［土］」のような曜日の印は、まとめたときは外す
+  const title = group.length > 1 ? c.title.replace(/［.］/g, "") : c.title;
   return `
   <article class="concert ${c.highlight ? "kobaken" : ""}" style="--c:${color(c.orchestra)}">
     <div class="meta">
       <span class="badge">${esc(o.short)}</span>
-      <span class="when">${jpDate(c.date)} ${esc(c.time)}</span>
-      ${c.sold_out ? `<span class="badge soldout">完売</span>` : ""}
+      ${whens}
     </div>
-    <h3>${esc(c.title)}</h3>
-    ${c.venue ? `<p class="venue">📍 ${esc(c.venue)}</p>` : ""}
+    <h3>${esc(title)}</h3>
+    ${c.venue && sameVenue ? `<p class="venue">📍 ${esc(c.venue)}</p>` : ""}
     ${c.conductor ? `<p class="people">指揮：<strong>${c.highlight ? "★ " : ""}${esc(c.conductor)}</strong></p>` : ""}
     ${c.performers.length ? `<p class="people">${c.performers.map(esc).join(" ／ ")}</p>` : ""}
     ${c.program.length ? `<ul>${c.program.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
@@ -138,21 +150,6 @@ function concertCard(c) {
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">公式サイトで見る ›</a>` : ""}
     </div>
   </article>`;
-}
-
-// 同じ団体・同じ指揮者・同じ曲目なら「同じ演目」とみなす
-const programKey = (c) =>
-  [c.orchestra, c.conductor, c.program.length ? c.program.join("|") : c.title.replace(/［.］|\s/g, "")].join("#");
-
-// 2回目以降の公演：1行だけ
-function repeatRow(c, first) {
-  return `
-  <a class="repeat-row ${c.highlight ? "kobaken" : ""}" style="--c:${color(c.orchestra)}" href="${esc(c.url)}" target="_blank" rel="noopener">
-    <span class="badge">${esc(orchestra(c.orchestra).short)}</span>
-    <span class="when">${jpDate(c.date)} ${esc(c.time)}</span>
-    <span class="same">${jpDate(first.date, false)}と同様${c.venue !== first.venue ? `（${esc(c.venue)}）` : ""}</span>
-    ${c.sold_out ? `<span class="badge soldout">完売</span>` : ""}
-  </a>`;
 }
 
 function renderList() {
@@ -169,14 +166,14 @@ function renderList() {
   }
   $("show-all").hidden = !selected;
 
-  const firstOf = new Map();
-  const html = list.map((c) => {
-    if (selected) return concertCard(c);
-    const key = programKey(c);
-    if (firstOf.has(key)) return repeatRow(c, firstOf.get(key));
-    firstOf.set(key, c);
-    return concertCard(c);
-  }).join("");
+  // 月の一覧では、同じ演目の公演を1枚のカードにまとめる（日付を選んだときはそのまま）
+  const groups = new Map();
+  for (const c of list) {
+    const key = selected ? c.date + c.url + c.time : programKey(c);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(c);
+  }
+  const html = [...groups.values()].map((g) => concertCard(g[0], g)).join("");
 
   $("list").innerHTML = list.length
     ? html
