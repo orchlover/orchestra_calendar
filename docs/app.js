@@ -11,6 +11,8 @@ const state = {
   month: 0,          // 0 = 1月
   selected: null,    // 選んだ日（"YYYY-MM-DD"）
   hidden: new Set(JSON.parse(localStorage.getItem("hiddenOrchestras") || "[]")),
+  favs: new Set(JSON.parse(localStorage.getItem("favoriteConcerts") || "[]")), // ★を付けた公演
+  favView: false,    // ★の公演だけを一覧に出しているか
 };
 
 const $ = (id) => document.getElementById(id);
@@ -25,6 +27,50 @@ const jpDate = (k, withWeek = true) => {
   const d = parseKey(k);
   return `${d.getMonth() + 1}月${d.getDate()}日` + (withWeek ? `（${WEEK[d.getDay()]}）` : "");
 };
+// ---------- 日本の祝日（計算で出す。外部のデータは使わない） ----------
+const holidayCache = {};
+function holidaysOf(y) {
+  if (holidayCache[y]) return holidayCache[y];
+  const h = new Set();
+  const key = (m, d) => `${y}-${pad(m)}-${pad(d)}`;
+  const nthMonday = (m, n) => 1 + ((8 - new Date(y, m - 1, 1).getDay()) % 7) + (n - 1) * 7;
+  const shift = y - 1980;
+  [[1, 1], [2, 11], [2, 23], [4, 29], [5, 3], [5, 4], [5, 5], [8, 11], [11, 3], [11, 23]]
+    .forEach(([m, d]) => h.add(key(m, d)));
+  h.add(key(1, nthMonday(1, 2)));   // 成人の日
+  h.add(key(7, nthMonday(7, 3)));   // 海の日
+  h.add(key(9, nthMonday(9, 3)));   // 敬老の日
+  h.add(key(10, nthMonday(10, 2))); // スポーツの日
+  h.add(key(3, Math.floor(20.8431 + 0.242194 * shift - Math.floor(shift / 4)))); // 春分の日
+  h.add(key(9, Math.floor(23.2488 + 0.242194 * shift - Math.floor(shift / 4)))); // 秋分の日
+  // 国民の休日：祝日にはさまれた平日（9月の連休など）
+  for (let d = 2; d <= 29; d++) {
+    if (h.has(key(9, d - 1)) && h.has(key(9, d + 1)) && !h.has(key(9, d)) && new Date(y, 8, d).getDay() !== 0) h.add(key(9, d));
+  }
+  // 振替休日：日曜の祝日の次の、祝日でない日
+  for (const k of [...h].sort()) {
+    const d = parseKey(k);
+    if (d.getDay() !== 0) continue;
+    do d.setDate(d.getDate() + 1); while (h.has(toKey(d)));
+    h.add(toKey(d));
+  }
+  return (holidayCache[y] = h);
+}
+const isHoliday = (k) => holidaysOf(Number(k.slice(0, 4))).has(k);
+// 土日・祝日（演奏会に行ける日）
+const isOffDay = (k) => { const w = parseKey(k).getDay(); return w === 0 || w === 6 || isHoliday(k); };
+
+// ---------- ★（お気に入り） ----------
+const favId = (c) => `${c.url}|${c.date}|${c.time}`;
+const isFav = (c) => state.favs.has(favId(c));
+function toggleFav(ids) {
+  const on = ids.some((id) => state.favs.has(id));
+  ids.forEach((id) => (on ? state.favs.delete(id) : state.favs.add(id)));
+  localStorage.setItem("favoriteConcerts", JSON.stringify([...state.favs]));
+  renderCalendar();
+  renderList();
+}
+
 const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 // ---------- データ ----------
@@ -89,14 +135,15 @@ function renderCalendar() {
     const dow = (firstDow + d - 1) % 7;
     const list = byDay[key] || [];
     const cls = ["day",
-      dow === 0 ? "sun" : "", dow === 6 ? "sat" : "",
+      dow === 0 || isHoliday(key) ? "sun" : "", dow === 6 && !isHoliday(key) ? "sat" : "",
       key === today ? "today" : "", key < today ? "past" : "",
       key === state.selected ? "selected" : ""].filter(Boolean).join(" ");
     const tags = list.map((c) =>
       `<span class="tag ${c.sold_out ? "soldout" : ""} ${c.highlight ? "kobaken" : ""}" style="--c:${color(c.orchestra)}">${esc(orchestra(c.orchestra).tag || orchestra(c.orchestra).short)}</span>`
     ).join("");
     const label = `${month + 1}月${d}日` + (list.length ? `、${list.length}公演` : "");
-    html += `<button type="button" class="${cls}" data-key="${key}" aria-label="${label}"><span class="num">${d}</span>${tags}</button>`;
+    const fav = list.some(isFav) ? `<span class="fav-mark">★</span>` : "";
+    html += `<button type="button" class="${cls}" data-key="${key}" aria-label="${label}"><span class="num">${d}${fav}</span>${tags}</button>`;
   }
   $("grid").innerHTML = html;
 
@@ -104,6 +151,7 @@ function renderCalendar() {
     cell.addEventListener("click", () => {
       const key = cell.dataset.key;
       state.selected = state.selected === key ? null : key;
+      state.favView = false;
       renderCalendar();
       renderList();
       if (state.selected) $("list-title").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -117,7 +165,8 @@ const programKey = (c) =>
   [c.orchestra, c.conductor, c.program.length ? c.program.join("|") : c.title.replace(/［.］|\s/g, "")].join("#");
 
 // 公演カード。group は同じ演目の公演（日付順）で、1枚にまとめて日付を並べる
-function concertCard(c, group = [c]) {
+// folded = true なら、1行だけ見せて、タップで開く
+function concertCard(c, group = [c], folded = false) {
   const o = orchestra(c.orchestra);
   const today = todayKey();
   let saleNote = "";
@@ -134,13 +183,17 @@ function concertCard(c, group = [c]) {
   ).join(`<span class="sep">／</span>`);
   // 「［金］」「［土］」のような曜日の印は、まとめたときは外す
   const title = group.length > 1 ? c.title.replace(/［.］/g, "") : c.title;
-  return `
-  <article class="concert ${c.highlight ? "kobaken" : ""}" style="--c:${color(c.orchestra)}">
+  const fav = group.some(isFav);
+  const star = `<button type="button" class="star-btn ${fav ? "on" : ""}" data-ids="${esc(group.map(favId).join("\n"))}"
+      aria-label="${fav ? "★を外す" : "★を付ける"}" aria-pressed="${fav}">${fav ? "★" : "☆"}</button>`;
+  const head = `
     <div class="meta">
       <span class="badge">${esc(o.short)}</span>
       ${whens}
+      ${star}
     </div>
-    <h3>${esc(title)}</h3>
+    <h3>${esc(title)}</h3>`;
+  const body = `
     ${c.venue && sameVenue ? `<p class="venue">📍 ${esc(c.venue)}</p>` : ""}
     ${c.conductor ? `<p class="people">指揮：<strong>${c.highlight ? "★ " : ""}${esc(c.conductor)}</strong></p>` : ""}
     ${c.performers.length ? `<p class="people">${c.performers.map(esc).join(" ／ ")}</p>` : ""}
@@ -148,36 +201,55 @@ function concertCard(c, group = [c]) {
     <div class="links">
       <span>${saleNote}</span>
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">公式サイトで見る ›</a>` : ""}
-    </div>
-  </article>`;
+    </div>`;
+  const cls = `concert ${c.highlight ? "kobaken" : ""} ${fav ? "fav" : ""}`;
+  return folded
+    ? `<details class="${cls} folded" style="--c:${color(c.orchestra)}"><summary>${head}</summary>${body}</details>`
+    : `<article class="${cls}" style="--c:${color(c.orchestra)}">${head}${body}</article>`;
 }
 
 function renderList() {
-  const { year, month, selected } = state;
+  const { year, month, selected, favView } = state;
   const monthPrefix = `${year}-${pad(month + 1)}-`;
   let list = visibleConcerts();
 
-  if (selected) {
+  if (favView) {
+    list = list.filter(isFav);
+    $("list-title").textContent = `★の公演（${list.length}）`;
+  } else if (selected) {
     list = list.filter((c) => c.date === selected);
     $("list-title").textContent = `${jpDate(selected)}の公演`;
   } else {
     list = list.filter((c) => c.date.startsWith(monthPrefix));
     $("list-title").textContent = `${month + 1}月の公演（${list.length}）`;
   }
-  $("show-all").hidden = !selected;
+  $("show-all").hidden = !selected || favView;
+  $("fav-toggle").textContent = favView ? "月の一覧に戻る" : `★の公演（${visibleConcerts().filter(isFav).length}）`;
+  $("fav-toggle").classList.toggle("on", favView);
 
-  // 月の一覧では、同じ演目の公演を1枚のカードにまとめる（日付を選んだときはそのまま）
+  // 同じ演目の公演を1枚のカードにまとめる（日付を選んだときはそのまま）
   const groups = new Map();
   for (const c of list) {
-    const key = selected ? c.date + c.url + c.time : programKey(c);
+    const key = selected && !favView ? favId(c) : programKey(c);
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(c);
   }
-  const html = [...groups.values()].map((g) => concertCard(g[0], g)).join("");
+  // 月の一覧では、平日だけの公演は折りたたむ（土日・祝日を含むものは開いたまま）
+  const foldWeekdays = !selected && !favView;
+  const html = [...groups.values()]
+    .map((g) => concertCard(g[0], g, foldWeekdays && !g.some((c) => isOffDay(c.date))))
+    .join("");
 
-  $("list").innerHTML = list.length
-    ? html
-    : `<p class="empty-msg">${selected ? "この日の定期演奏会はありません" : "この月の定期演奏会はありません"}</p>`;
+  const empty = favView ? "☆を押すと、ここに集まります"
+    : selected ? "この日の定期演奏会はありません" : "この月の定期演奏会はありません";
+  $("list").innerHTML = list.length ? html : `<p class="empty-msg">${empty}</p>`;
+
+  $("list").querySelectorAll(".star-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault(); // 折りたたみが開いたり閉じたりしないように
+      toggleFav(btn.dataset.ids.split("\n"));
+    });
+  });
 }
 
 // ---------- 発売のお知らせ ----------
@@ -247,6 +319,13 @@ async function init() {
   $("prev").addEventListener("click", () => moveMonth(-1));
   $("next").addEventListener("click", () => moveMonth(1));
   $("show-all").addEventListener("click", () => { state.selected = null; renderCalendar(); renderList(); });
+  $("fav-toggle").addEventListener("click", () => {
+    state.favView = !state.favView;
+    state.selected = null;
+    renderCalendar();
+    renderList();
+    $("list-title").scrollIntoView({ behavior: "smooth", block: "start" });
+  });
 
   const now = new Date();
   state.year = now.getFullYear();

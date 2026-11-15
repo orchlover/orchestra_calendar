@@ -17,7 +17,7 @@
   <link rel="icon" href="icons/icon-192.png">
   <link rel="manifest" href="manifest.webmanifest">
 
-  <link rel="stylesheet" href="style.css?v=16">
+  <link rel="stylesheet" href="style.css?v=17">
   <!-- 古いiPhone向け：ホーム画面から開いたことを印にする（上の青いバーを伸ばすため） -->
   <script>if (navigator.standalone) document.documentElement.classList.add("standalone");</script>
 </head>
@@ -59,7 +59,11 @@
     <section class="list-section">
       <div class="list-head">
         <h2 id="list-title"></h2>
-        <button type="button" class="show-all" id="show-all" hidden>月全体を表示</button>
+        <div class="list-buttons">
+          <button type="button" class="show-all" id="show-all" hidden>月全体を表示</button>
+          <!-- ★を付けた公演だけを見る／月の一覧に戻る -->
+          <button type="button" class="show-all fav-toggle" id="fav-toggle">★の公演</button>
+        </div>
       </div>
       <div id="list"></div>
     </section>
@@ -90,7 +94,7 @@
     <p>発売日は一般発売日（会員先行ではない日）です。</p>
   </footer>
 
-  <script src="app.js?v=16"></script>
-  <script src="art.js?v=16"></script>
+  <script src="app.js?v=17"></script>
+  <script src="art.js?v=17"></script>
 </body>
 </html>

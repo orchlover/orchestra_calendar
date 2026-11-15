@@ -14,7 +14,7 @@ iPhoneではホーム画面に追加すると、アプリのように使える�
 | `scraper/art_main.py` | 美術館3館（`tobikan.py` / `nact.py` / `mot.py`）の企画展をまとめて `docs/exhibitions.json` に保存する。強調する画家（`HIGHLIGHT_WORDS`）もここ |
 | `scraper/common.py` | 共通の設定。**何ヶ月先まで集めるか（`MONTHS_AHEAD`）** もここ |
 | `docs/` | 公開されるWebページ（`index.html` / `style.css` / `app.js`＝オケ / `art.js`＝美）と、集めたデータ `concerts.json` / `exhibitions.json` |
-| `.github/workflows/update.yml` | 毎週月曜 朝6時に自動で公演・展覧会データを更新する設定 |
+| `.github/workflows/update.yml` | 毎週日曜 夜7時に自動で公演・展覧会データを更新する設定 |
 | `tools/make_icons.py` | ホーム画面用アイコンを作るスクリプト |
 
 ## 手元で動かす

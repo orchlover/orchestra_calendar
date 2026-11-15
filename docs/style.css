@@ -260,6 +260,39 @@ h2 { font-size: 1rem; margin: 0 0 10px; }
   text-align: center;
 }
 
+/* ---- ★（お気に入り） ---- */
+.list-buttons { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+.fav-toggle.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.star-btn {
+  margin-left: auto;
+  border: none;
+  background: none;
+  padding: 0 2px;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  font-family: inherit;
+}
+.star-btn.on { color: var(--gogh); }
+.day .fav-mark { color: var(--gogh); font-size: .7rem; margin-left: 1px; }
+
+/* ---- 平日だけの公演：折りたたみ（タップで開く） ---- */
+details.concert > summary { list-style: none; cursor: pointer; }
+details.concert > summary::-webkit-details-marker { display: none; }
+details.folded:not([open]) { padding-top: 8px; padding-bottom: 8px; }
+details.folded:not([open]) h3 {
+  margin: 4px 0 0;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+details.folded:not([open]) .meta { font-size: .8rem; }
+details.folded:not([open]) .meta .when { font-weight: 600; }
+
 .concert .meta .sep { color: var(--muted); margin: 0 -4px; }
 
 /* ---- 小林研一郎の公演：金色で強調 ---- */
