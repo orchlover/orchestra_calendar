@@ -22,8 +22,8 @@ ORCHESTRAS = [
     {"id": "nhk", "name": "NHK交響楽団", "short": "N", "module": nhk},
     {"id": "yomikyo", "name": "読売日本交響楽団", "short": "読", "module": yomikyo},
     {"id": "njp", "name": "新日本フィルハーモニー交響楽団", "short": "新日", "module": njp},
-    {"id": "kanaphil", "name": "神奈川フィルハーモニー管弦楽団", "short": "神奈川フィル", "tag": "神奈川", "module": kanaphil},
-    {"id": "jpo", "name": "日本フィルハーモニー交響楽団", "short": "日フィル", "module": jpo},
+    {"id": "kanaphil", "name": "神奈川フィルハーモニー管弦楽団", "short": "神奈川", "module": kanaphil},
+    {"id": "jpo", "name": "日本フィルハーモニー交響楽団", "short": "日本", "module": jpo},
     {"id": "oek", "name": "オーケストラ・アンサンブル金沢", "short": "OEK", "module": oek},
 ]
 
