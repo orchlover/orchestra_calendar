@@ -61,9 +61,9 @@ body {
 /* ホーム画面から開いたとき：上の時刻・電池のあたりは iPhone が白くぼかすので、
    青いバーを下に伸ばして、タイトルと切り替えをそのぼかしの下に出す */
 @media (display-mode: standalone) {
-  .app-header { padding-top: calc(max(env(safe-area-inset-top), 20px) + 36px); }
+  .app-header { padding-top: calc(max(env(safe-area-inset-top), 20px) + 20px); }
 }
-html.standalone .app-header { padding-top: calc(max(env(safe-area-inset-top), 20px) + 36px); }
+html.standalone .app-header { padding-top: calc(max(env(safe-area-inset-top), 20px) + 20px); }
 
 .header-row {
   display: grid;
