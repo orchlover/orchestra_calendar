@@ -1,4 +1,4 @@
-# 週1回、公演情報を集め直して docs/concerts.json を更新する
+# 週1回、公演情報と展覧会情報を集め直して docs/concerts.json・docs/exhibitions.json を更新する
 name: 公演情報を更新
 
 on:
@@ -29,10 +29,15 @@ jobs:
           TZ: Asia/Tokyo
         run: python scraper/main.py
 
+      - name: 展覧会情報を集める
+        env:
+          TZ: Asia/Tokyo
+        run: python scraper/art_main.py
+
       - name: 変わっていたら保存する
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/concerts.json
-          git diff --cached --quiet || git commit -m "公演情報を更新"
+          git add docs/concerts.json docs/exhibitions.json
+          git diff --cached --quiet || git commit -m "公演・展覧会情報を更新"
           git push

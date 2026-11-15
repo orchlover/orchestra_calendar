@@ -1,6 +1,6 @@
 {
-  "name": "オーケストラカレンダー",
-  "short_name": "オケカレ",
+  "name": "芸術",
+  "short_name": "芸術",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -41,6 +41,7 @@ def fetch():
         for c in get(BASE + path).json()["concerts"]:
             if c["category"] != "subscription":
                 continue
+            songs = [strip_tags(s["name"]) for s in c["songs"]]
             days = [d for d in c["details"] if start <= date.fromisoformat(d["date"]) <= end]
             if not days:
                 continue
@@ -61,13 +62,13 @@ def fetch():
             for d in days:
                 concerts.append(make_concert(
                     ID,
-                    title=c["title"],
+                    title=strip_tags(c["title"]),
                     date=d["date"],
                     time=to_24h(d["start_time"]),
                     venue=halls.get(c["hall_id"], {}).get("name", ""),
                     conductor=conductor,
                     performers=performers,
-                    program=[strip_tags(s["name"]) for s in c["songs"]],
+                    program=songs,
                     url=url,
                     sale_date=sale,
                 ))

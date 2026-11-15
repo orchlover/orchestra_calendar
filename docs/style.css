@@ -15,6 +15,17 @@
   --yomikyo: #1f5fbf;
   --njp: #9b3fb5;
   --kanaphil: #0a8f8a;
+  --jpo: #d6336c;
+  --oek: #5f8a1c;
+
+  /* 美術館の色 */
+  --tobikan: #c0562b;
+  --nact: #2e7d4f;
+  --mot: #4b4bb0;
+
+  /* ゴッホ展の特別な色（ひまわりの金色） */
+  --gogh: #e9a800;
+  --gogh-deep: #b77d00;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -42,6 +53,7 @@ body {
 }
 
 .app-header {
+  position: relative;
   background: var(--accent);
   color: #fff;
   padding: calc(14px + env(safe-area-inset-top)) 18px 14px;
@@ -108,7 +120,8 @@ main {
 
 .weekdays, .grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  /* minmax(0, 1fr)：ラベルが長くても列の幅を広げない */
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 .weekdays span {
   text-align: center;
@@ -120,6 +133,7 @@ main {
 .weekdays .sat { color: var(--sat); }
 
 .day {
+  min-width: 0;
   min-height: 64px;
   border-top: 1px solid var(--line);
   padding: 3px 2px;
@@ -151,7 +165,9 @@ main {
   color: #fff;
   background: var(--c);
   border-radius: 4px;
-  padding: 1px 3px;
+  padding: 1px 1px;
+  letter-spacing: -.06em;
+  text-align: center;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -228,6 +244,38 @@ h2 { font-size: 1rem; margin: 0 0 10px; }
   text-align: center;
 }
 
+/* ---- 同じ演目の2回目以降（1行） ---- */
+.repeat-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  background: var(--card);
+  border-radius: 10px;
+  border-left: 6px solid var(--c);
+  padding: 7px 12px;
+  margin: -4px 0 10px;
+  font-size: .82rem;
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.repeat-row .when { font-weight: 700; }
+.repeat-row .same { color: var(--muted); }
+
+/* ---- 小林研一郎の公演：金色で強調 ---- */
+.tag.kobaken {
+  background: linear-gradient(135deg, #ffd84d, var(--gogh));
+  color: #3a2a00;
+  font-weight: 700;
+  box-shadow: inset 0 0 0 1px var(--c);
+}
+.concert.kobaken, .repeat-row.kobaken {
+  background: linear-gradient(135deg, rgba(255,216,77,.30), rgba(255,216,77,.08)), var(--card);
+  box-shadow: 0 0 0 2px var(--gogh), 0 2px 8px rgba(233,168,0,.35);
+}
+.concert.kobaken .people strong { color: var(--gogh-deep); }
+
 /* ---- 発売のお知らせ ---- */
 .sale-item {
   background: var(--card);
@@ -264,3 +312,134 @@ h2 { font-size: 1rem; margin: 0 0 10px; }
   color: var(--muted);
 }
 .app-footer p { margin: 4px 0; }
+
+/* ---- オケ／美 の切り替え（右上） ---- */
+.mode-switch {
+  position: absolute;
+  right: 12px;
+  top: calc(12px + env(safe-area-inset-top));
+  display: flex;
+  background: rgba(255,255,255,.15);
+  border-radius: 999px;
+  padding: 3px;
+}
+.mode-switch button {
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-family: inherit;
+  font-size: .85rem;
+  font-weight: 700;
+  padding: 4px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  opacity: .75;
+}
+.mode-switch button[aria-selected="true"] {
+  background: #fff;
+  color: var(--accent);
+  opacity: 1;
+}
+
+/* ---- ゴッホ展のお知らせ ---- */
+.gogh-banner {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #ffd84d, var(--gogh));
+  color: #3a2a00;
+  text-decoration: none;
+  font-size: .88rem;
+  box-shadow: 0 2px 8px rgba(233,168,0,.35);
+}
+.gogh-banner .star { font-size: 1.4rem; }
+.gogh-banner small { display: block; opacity: .8; }
+
+/* ---- 企画展の横棒グラフ ---- */
+.gantt-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 10px 10px 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+.gantt-months {
+  position: relative;
+  height: 30px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+}
+.gantt-months span {
+  position: absolute;
+  top: 0;
+  font-size: .62rem;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-left: 2px;
+}
+.gantt-months .month { top: 13px; }
+.gantt-months .year { font-weight: 700; color: var(--text); border-left: 1px solid var(--muted); }
+.ex-row {
+  padding: 6px 0 8px;
+  border-bottom: 1px solid var(--line);
+}
+.ex-row:last-child { border-bottom: none; }
+.ex-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0 0 4px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: .85rem;
+  text-align: left;
+  cursor: pointer;
+}
+.ex-title { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ex-row.open .ex-title { white-space: normal; }
+.ex-head .now { font-size: .65rem; color: var(--c); border: 1px solid var(--c); border-radius: 4px; padding: 0 4px; white-space: nowrap; }
+.track {
+  position: relative;
+  height: 14px;
+}
+.track .mline, .track .today-line {
+  position: absolute;
+  top: -2px; bottom: -2px;
+  width: 1px;
+  background: var(--line);
+}
+.track .today-line { background: var(--sun); width: 2px; z-index: 1; }
+.track .bar {
+  position: absolute;
+  top: 0; bottom: 0;
+  background: var(--c);
+  border-radius: 4px;
+}
+.ex-detail {
+  margin-top: 8px;
+  font-size: .85rem;
+  color: var(--muted);
+}
+.ex-detail p { margin: 2px 0; }
+.ex-detail a { color: var(--c); font-weight: 600; text-decoration: none; }
+
+/* ゴッホ展：金色で強調 */
+.ex-row.gogh {
+  --c: var(--gogh-deep);
+  background: linear-gradient(90deg, rgba(255,216,77,.28), rgba(255,216,77,.08));
+  border-radius: 10px;
+  padding-left: 6px; padding-right: 6px;
+  margin: 2px -6px;
+}
+.ex-row.gogh .ex-title { font-weight: 700; }
+.ex-row.gogh .star { color: var(--gogh); font-size: 1rem; }
+.ex-row.gogh .badge { background: var(--gogh-deep); }
+.ex-row.gogh .bar {
+  background: repeating-linear-gradient(45deg, var(--gogh), var(--gogh) 6px, #ffd84d 6px, #ffd84d 12px);
+  box-shadow: 0 0 0 1px var(--gogh-deep), 0 0 8px rgba(233,168,0,.6);
+}

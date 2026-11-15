@@ -1,4 +1,4 @@
-"""4団体の収集スクリプトで共通して使う道具。"""
+"""各団体・各館の収集スクリプトで共通して使う道具。"""
 
 import re
 import time
@@ -7,7 +7,7 @@ from datetime import date, timedelta
 import requests
 
 # 何ヶ月先までの公演を集めるか
-MONTHS_AHEAD = 4
+MONTHS_AHEAD = 6
 
 # サイトに負担をかけないよう、1回アクセスするごとに待つ秒数
 WAIT_SECONDS = 1.5
@@ -31,7 +31,7 @@ def get(url, **kwargs):
 
 
 def date_range():
-    """集める期間（今日〜4ヶ月後）を返す。"""
+    """集める期間（今日〜MONTHS_AHEAD ヶ月後）を返す。"""
     start = date.today()
     end = start + timedelta(days=round(MONTHS_AHEAD * 30.5))
     return start, end

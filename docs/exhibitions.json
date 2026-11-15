@@ -1,0 +1,151 @@
+{
+ "updated_at": "2026-11-15 14:38",
+ "museums": [
+  {
+   "id": "tobikan",
+   "name": "東京都美術館",
+   "short": "都美"
+  },
+  {
+   "id": "nact",
+   "name": "国立新美術館",
+   "short": "新美"
+  },
+  {
+   "id": "mot",
+   "name": "東京都現代美術館",
+   "short": "MOT"
+  }
+ ],
+ "errors": [],
+ "exhibitions": [
+  {
+   "museum": "mot",
+   "title": "多田美波―光、凛と ゆれる",
+   "start": "2026-08-29",
+   "end": "2026-12-06",
+   "url": "https://www.mot-art-museum.jp/exhibitions/Tada-Minami/",
+   "highlight": false
+  },
+  {
+   "museum": "mot",
+   "title": "共時的星叢──時を共にした星たち 越境する芸術のまなざし",
+   "start": "2026-09-05",
+   "end": "2026-12-13",
+   "url": "https://www.mot-art-museum.jp/exhibitions/Constellation/",
+   "highlight": false
+  },
+  {
+   "museum": "nact",
+   "title": "ルーヴル美術館展 ルネサンス",
+   "start": "2026-09-09",
+   "end": "2026-12-13",
+   "url": "https://www.nact.jp/exhibition_special/2026/louvre2026/",
+   "highlight": false
+  },
+  {
+   "museum": "nact",
+   "title": "少女漫画・インフィニティ 萩尾望都×山岸凉子×大和和紀 三人展",
+   "start": "2026-10-28",
+   "end": "2027-02-08",
+   "url": "https://www.nact.jp/exhibition_special/2026/shojomanga/",
+   "highlight": false
+  },
+  {
+   "museum": "tobikan",
+   "title": "オルセー美術館所蔵 いまを生きる歓び",
+   "start": "2026-11-14",
+   "end": "2027-03-28",
+   "url": "https://www.tobikan.jp/exhibition/2026_orsay.html",
+   "highlight": false
+  },
+  {
+   "museum": "tobikan",
+   "title": "あなたが世界を読むために",
+   "start": "2026-11-19",
+   "end": "2027-01-11",
+   "url": "https://www.tobikan.jp/exhibition/2026_waysofreading.html",
+   "highlight": false
+  },
+  {
+   "museum": "mot",
+   "title": "サンプライド財団共催展 スペクトロシンセシスⅤ：ならば、発明せよ",
+   "start": "2027-02-06",
+   "end": "2027-05-16",
+   "url": "https://www.mot-art-museum.jp/exhibitions/SUNPRIDE/",
+   "highlight": false
+  },
+  {
+   "museum": "mot",
+   "title": "ハンス・ハーケ：インフォメーション・フロー",
+   "start": "2027-02-06",
+   "end": "2027-05-16",
+   "url": "https://www.mot-art-museum.jp/exhibitions/Haacke/",
+   "highlight": false
+  },
+  {
+   "museum": "mot",
+   "title": "MOTアニュアル2027 身を通す",
+   "start": "2027-02-20",
+   "end": "2027-05-30",
+   "url": "https://www.mot-art-museum.jp/exhibitions/mot-annual-2026/",
+   "highlight": false
+  },
+  {
+   "museum": "nact",
+   "title": "ディーヴァ展",
+   "start": "2027-03-24",
+   "end": "2027-07-19",
+   "url": "https://www.nact.jp/exhibition_special/2027/diva2027/",
+   "highlight": false
+  },
+  {
+   "museum": "tobikan",
+   "title": "デュフィ展",
+   "start": "2027-04-24",
+   "end": "2027-08-22",
+   "url": "https://www.tobikan.jp/exhibition/2027_dufy.html",
+   "highlight": false
+  },
+  {
+   "museum": "mot",
+   "title": "ソ・ドホ展（仮称）",
+   "start": "2027-06-19",
+   "end": "2027-09-26",
+   "url": "https://www.mot-art-museum.jp/exhibitions/dohosuh/",
+   "highlight": false
+  },
+  {
+   "museum": "nact",
+   "title": "リヒテンシュタイン侯爵家コレクション ⻄洋美術における古代",
+   "start": "2027-09-08",
+   "end": "2027-12-06",
+   "url": "https://www.nact.jp/exhibition_special/2027/liechtenstein/",
+   "highlight": false
+  },
+  {
+   "museum": "tobikan",
+   "title": "レンブラントからモネ、ゴッホ ハマー美術館展",
+   "start": "2027-09-11",
+   "end": "2027-12-12",
+   "url": "https://www.tobikan.jp/exhibition/2027_hammer.html",
+   "highlight": true
+  },
+  {
+   "museum": "nact",
+   "title": "ギルバート＆ジョージ展",
+   "start": "2027-09-17",
+   "end": "2027-12-20",
+   "url": "https://www.nact.jp/exhibition_special/2027/post/",
+   "highlight": false
+  },
+  {
+   "museum": "mot",
+   "title": "ブライアン・イーノ展（仮称）",
+   "start": "2027-11-03",
+   "end": "2028-03-05",
+   "url": "https://www.mot-art-museum.jp/exhibitions/ENO/",
+   "highlight": false
+  }
+ ]
+}

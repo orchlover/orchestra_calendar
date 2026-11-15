@@ -3,28 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>オーケストラカレンダー</title>
-  <meta name="description" content="在京・神奈川の4オーケストラの定期演奏会カレンダー">
+  <title>芸術</title>
+  <meta name="description" content="オーケストラの定期演奏会と、美術館の企画展のカレンダー">
 
   <!-- iPhoneのホーム画面に追加したとき、アプリのように表示するための設定 -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="オケカレ">
+  <meta name="apple-mobile-web-app-title" content="芸術">
   <meta name="theme-color" content="#1b2340">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="icon" href="icons/icon-192.png">
   <link rel="manifest" href="manifest.webmanifest">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
   <header class="app-header">
-    <h1>オーケストラカレンダー</h1>
+    <h1>芸術</h1>
     <p class="updated" id="updated"></p>
+    <p class="updated" id="art-updated" hidden></p>
+    <!-- オケ／美 の切り替え -->
+    <div class="mode-switch" role="tablist" aria-label="表示の切り替え">
+      <button type="button" role="tab" data-mode="orch" aria-selected="true">オケ</button>
+      <button type="button" role="tab" data-mode="art" aria-selected="false">美</button>
+    </div>
   </header>
 
-  <main>
+  <!-- ===== オケ：定期演奏会カレンダー ===== -->
+  <main id="view-orch">
     <!-- 表示するオーケストラの切り替え -->
     <section class="filters" id="filters" aria-label="表示するオーケストラ"></section>
 
@@ -57,11 +64,26 @@
     </section>
   </main>
 
-  <footer class="app-footer">
+  <!-- ===== 美：企画展の1年カレンダー ===== -->
+  <main id="view-art" hidden>
+    <section class="filters" id="art-filters" aria-label="表示する美術館"></section>
+    <div id="gogh-banner"></div>
+    <section class="gantt-card">
+      <div class="gantt-months" id="gantt-months"></div>
+      <div id="gantt"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer" id="art-footer" hidden>
+    <p>各美術館の公式サイトの情報を週1回自動で集めています。企画展だけを載せています。会期や休館日は変わることがあるので、出かける前に必ず公式サイトで確認してください。</p>
+  </footer>
+
+  <footer class="app-footer" id="orch-footer">
     <p>各オーケストラ公式サイトの情報を週1回自動で集めています。出演者の変更などが反映されていないことがあるので、チケット購入前に必ず公式サイトで確認してください。</p>
     <p>発売日は一般発売日（会員先行ではない日）です。</p>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=8"></script>
+  <script src="art.js?v=8"></script>
 </body>
 </html>

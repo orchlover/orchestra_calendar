@@ -1,4 +1,4 @@
-// オーケストラカレンダーの画面を作るプログラム
+// 「オケ」の画面：オーケストラの定期演奏会カレンダーを作るプログラム
 // concerts.json（Pythonで集めたデータ）を読み込んで表示する
 
 const SALE_NOTICE_DAYS = 30; // 何日先までの発売をお知らせするか
@@ -93,7 +93,7 @@ function renderCalendar() {
       key === today ? "today" : "", key < today ? "past" : "",
       key === state.selected ? "selected" : ""].filter(Boolean).join(" ");
     const tags = list.map((c) =>
-      `<span class="tag ${c.sold_out ? "soldout" : ""}" style="--c:${color(c.orchestra)}">${esc(orchestra(c.orchestra).short)}</span>`
+      `<span class="tag ${c.sold_out ? "soldout" : ""} ${c.highlight ? "kobaken" : ""}" style="--c:${color(c.orchestra)}">${esc(orchestra(c.orchestra).tag || orchestra(c.orchestra).short)}</span>`
     ).join("");
     const label = `${month + 1}月${d}日` + (list.length ? `、${list.length}公演` : "");
     html += `<button type="button" class="${cls}" data-key="${key}" aria-label="${label}"><span class="num">${d}</span>${tags}</button>`;
@@ -122,7 +122,7 @@ function concertCard(c) {
       : `一般発売 ${jpDate(c.sale_date, false)}`;
   }
   return `
-  <article class="concert" style="--c:${color(c.orchestra)}">
+  <article class="concert ${c.highlight ? "kobaken" : ""}" style="--c:${color(c.orchestra)}">
     <div class="meta">
       <span class="badge">${esc(o.short)}</span>
       <span class="when">${jpDate(c.date)} ${esc(c.time)}</span>
@@ -130,7 +130,7 @@ function concertCard(c) {
     </div>
     <h3>${esc(c.title)}</h3>
     ${c.venue ? `<p class="venue">📍 ${esc(c.venue)}</p>` : ""}
-    ${c.conductor ? `<p class="people">指揮：<strong>${esc(c.conductor)}</strong></p>` : ""}
+    ${c.conductor ? `<p class="people">指揮：<strong>${c.highlight ? "★ " : ""}${esc(c.conductor)}</strong></p>` : ""}
     ${c.performers.length ? `<p class="people">${c.performers.map(esc).join(" ／ ")}</p>` : ""}
     ${c.program.length ? `<ul>${c.program.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}
     <div class="links">
@@ -138,6 +138,21 @@ function concertCard(c) {
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">公式サイトで見る ›</a>` : ""}
     </div>
   </article>`;
+}
+
+// 同じ団体・同じ指揮者・同じ曲目なら「同じ演目」とみなす
+const programKey = (c) =>
+  [c.orchestra, c.conductor, c.program.length ? c.program.join("|") : c.title.replace(/［.］|\s/g, "")].join("#");
+
+// 2回目以降の公演：1行だけ
+function repeatRow(c, first) {
+  return `
+  <a class="repeat-row ${c.highlight ? "kobaken" : ""}" style="--c:${color(c.orchestra)}" href="${esc(c.url)}" target="_blank" rel="noopener">
+    <span class="badge">${esc(orchestra(c.orchestra).short)}</span>
+    <span class="when">${jpDate(c.date)} ${esc(c.time)}</span>
+    <span class="same">${jpDate(first.date, false)}と同様${c.venue !== first.venue ? `（${esc(c.venue)}）` : ""}</span>
+    ${c.sold_out ? `<span class="badge soldout">完売</span>` : ""}
+  </a>`;
 }
 
 function renderList() {
@@ -154,8 +169,17 @@ function renderList() {
   }
   $("show-all").hidden = !selected;
 
+  const firstOf = new Map();
+  const html = list.map((c) => {
+    if (selected) return concertCard(c);
+    const key = programKey(c);
+    if (firstOf.has(key)) return repeatRow(c, firstOf.get(key));
+    firstOf.set(key, c);
+    return concertCard(c);
+  }).join("");
+
   $("list").innerHTML = list.length
-    ? list.map(concertCard).join("")
+    ? html
     : `<p class="empty-msg">${selected ? "この日の定期演奏会はありません" : "この月の定期演奏会はありません"}</p>`;
 }
 
